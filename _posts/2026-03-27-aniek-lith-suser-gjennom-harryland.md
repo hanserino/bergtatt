@@ -11,7 +11,7 @@ description: Sammen med Alan Goldbetter og Tess Smith * klatret nylig dagens
   gjest, Aniek Lith (30), ruta Suser Gjennom Harryland (6/A3) i Trollveggen. Med
   dette ble Aniek…
 episode_type: full
-hero_image: aniek2.jpg
+hero_image: /assets/uploads/aniek2.jpg
 image: https://assets.pippa.io/shows/6634a0a237ac170013034743/1774612585527-03043533-f0b8-4651-9e61-dfccf1f08f6f.jpeg
 audio_url: https://sphinx.acast.com/p/open/s/6634a0a237ac170013034743/e/69c670e5b991732771c76082/media.mp3
 acast_url: https://shows.acast.com/bergtatt/episodes/aniek-lith-suser-gjennom-harryland

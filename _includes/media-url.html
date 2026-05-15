@@ -1,0 +1,13 @@
+{% comment %}
+  Normaliser bildesti fra Decap/front matter til en fungerende URL.
+  Bruk: {% include media-url.html path=page.hero_image %}
+{% endcomment %}
+{% assign p = include.path | strip %}
+{% if p == blank %}
+{% elsif p contains '://' %}
+{{ p }}
+{% elsif p contains '/' %}
+{{ p | relative_url }}
+{% else %}
+{{ '/assets/uploads/' | append: p | relative_url }}
+{% endif %}

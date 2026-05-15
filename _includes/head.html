@@ -25,7 +25,15 @@
   <meta property="og:description" content="{{ meta_desc | strip_html | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:locale" content="{{ site.locale | default: 'nb_NO' }}">
-  {% assign og_image = page.image | default: site.assets.cover | absolute_url %}
+  {% if page.image %}
+    {% capture og_image_capture %}{% include media-url.html path=page.image %}{% endcapture %}
+    {% assign og_image = og_image_capture | strip %}
+    {% unless og_image contains '://' %}
+      {% assign og_image = og_image | absolute_url %}
+    {% endunless %}
+  {% else %}
+    {% assign og_image = site.assets.cover | absolute_url %}
+  {% endif %}
   <meta property="og:image" content="{{ og_image }}">
 
   <meta name="twitter:card" content="summary_large_image">

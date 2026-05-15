@@ -3,11 +3,12 @@
 {% assign heroes = site.assets.hero_images %}
 {% assign hero_idx = idx | modulo: heroes.size %}
 {% assign hero = post.hero_image | default: heroes[hero_idx] %}
+{% capture hero_src %}{% include media-url.html path=hero %}{% endcapture %}
 <article class="episode-card{% if include.featured %} episode-card--featured{% endif %}">
   <a class="episode-card__link" href="{{ post.url | relative_url }}">
     <div class="episode-card__visual">
       <img
-        src="{{ hero | relative_url }}"
+        src="{{ hero_src | strip }}"
         alt=""
         loading="lazy"
         decoding="async"

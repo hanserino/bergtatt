@@ -11,7 +11,7 @@ description: Gina Johansen er en eventyrer med et hårete mål. Hun vil sette
   solo-rekord for kvinner til Sydpolen. For å klare dette må hun dekke den 1130
   km lange…
 episode_type: full
-hero_image: gina-johansen.jpeg
+hero_image: /assets/uploads/gina-johansen.jpeg
 image: https://assets.pippa.io/shows/6634a0a237ac170013034743/1730789714730-b6e0a273-1d5e-45f6-bb38-3c1ff09dc977.jpeg
 audio_url: https://sphinx.acast.com/p/open/s/6634a0a237ac170013034743/e/6729c4177c84f525cfdf9c13/media.mp3
 acast_url: https://shows.acast.com/bergtatt/episodes/gina-johansen

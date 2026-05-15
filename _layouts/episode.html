@@ -3,12 +3,14 @@ layout: default
 body_class: page-episode
 ---
 {% assign hero = page.hero_image | default: site.assets.hero_images.first %}
+{% capture hero_src %}{% include media-url.html path=hero %}{% endcapture %}
+{% capture image_src %}{% include media-url.html path=page.image %}{% endcapture %}
 
 <article class="episode" itemscope itemtype="https://schema.org/PodcastEpisode">
   <header class="episode-hero">
     <div class="episode-hero__bg" aria-hidden="true">
       <img
-        src="{{ hero | relative_url }}"
+        src="{{ hero_src | strip }}"
         alt=""
         width="1920"
         height="1080"
@@ -35,7 +37,7 @@ body_class: page-episode
       {% if page.image %}
       <figure class="episode__art">
         <img
-          src="{{ page.image }}"
+          src="{{ image_src | strip }}"
           alt="Episodekunst for {{ page.title | escape }}"
           width="640"
           height="640"

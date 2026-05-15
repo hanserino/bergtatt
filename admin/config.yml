@@ -17,8 +17,9 @@ site_url: https://bergtattpodcast.no
 display_url: https://bergtattpodcast.no
 logo_url: https://bergtattpodcast.no/assets/logo/bergtatt-black.png
 
-media_folder: assets/uploads
-public_folder: /assets/uploads
+# Ledende "/" = rot i repo. Uten den lagres filer i _posts/ ved siden av .md-filer.
+media_folder: "/assets/uploads"
+public_folder: "/assets/uploads"
 
 slug:
   encoding: ascii
@@ -35,6 +36,8 @@ collections:
     format: frontmatter
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{episode_slug}}"
+    media_folder: "/assets/uploads"
+    public_folder: "/assets/uploads"
     fields:
       - label: Layout
         name: layout
@@ -105,12 +108,18 @@ collections:
       - label: Kort / hero
         name: hero_image
         widget: image
+        choose_url: false
+        media_folder: "/assets/uploads"
+        public_folder: "/assets/uploads"
         required: false
-        hint: "Bakgrunnsbilde på episoden og i episodelisten. Last opp her, eller behold eksisterende sti."
+        hint: "Bakgrunnsbilde på episoden og i episodelisten. Last opp her."
 
       - label: Episodekunst
         name: image
         widget: image
+        choose_url: false
+        media_folder: "/assets/uploads"
+        public_folder: "/assets/uploads"
         required: false
         hint: "Kvadratisk cover i episodelisten og for deling (Open Graph). Last opp her."
 
