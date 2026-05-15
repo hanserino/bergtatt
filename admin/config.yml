@@ -7,7 +7,7 @@ backend:
   repo: hanserino/bergtatt
   branch: main
   # OAuth-proxy (Cloudflare Worker) — se admin/OAUTH-SETUP.md
-  base_url: https://bergtatt-decap-oauth.hanserino.workers.dev
+  base_url: https://bergtatt-decap-oauth.bestpodcasts.workers.dev
   auth_endpoint: /auth
 
 # Kun lokalt: npx decap-server (ikke commit til main)
