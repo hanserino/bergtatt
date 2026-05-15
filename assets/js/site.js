@@ -17,25 +17,4 @@
     });
   }
 
-  var dock = document.getElementById("audio-dock");
-  var mainPlayer = document.querySelector(".episode-player");
-  if (dock && mainPlayer) {
-    var dockAudio = dock.querySelector("audio");
-    var observer = new IntersectionObserver(
-      function (entries) {
-        var visible = entries[0] && entries[0].isIntersecting;
-        dock.hidden = visible;
-      },
-      { rootMargin: "0px 0px -20% 0px", threshold: 0 }
-    );
-    observer.observe(mainPlayer);
-    if (dockAudio) {
-      dockAudio.addEventListener("play", function () {
-        mainPlayer.pause();
-      });
-      mainPlayer.addEventListener("play", function () {
-        dockAudio.pause();
-      });
-    }
-  }
 })();

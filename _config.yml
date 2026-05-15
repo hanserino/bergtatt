@@ -1,14 +1,14 @@
 title: Bergtatt
 description: >-
-  Podcast om bratt friluftsliv — alpinisme, randonee, BASE og fjellsport med høy innsats og åpent sinn.
-tagline: Bratt friluftsliv
+  Bratt friluftsliv — alpinklatring, randonee, BASE og andre fjellsporter i bratt terreng med høye konsekvenser.
+tagline: En norsk podcast om bratt friluftsliv
 url: "https://bergtattpodcast.no"
 baseurl: ""
 lang: nb
 locale: nb_NO
 
 author:
-  name: Hans Kristian Smedsrød
+  name: Hans Kristian Smedsrød Engdahl
   url: "https://www.instagram.com/hanserino/"
 
 publisher:

@@ -1,0 +1,90 @@
+{% assign player_id = include.id | default: 'podcast-player' %}
+{% assign is_dock = include.dock | default: false %}
+
+<div
+  class="podcast-player{% if is_dock %} podcast-player--dock{% endif %}"
+  id="{% if is_dock %}{{ player_id }}-dock{% else %}{{ player_id }}{% endif %}"
+  data-podcast-player
+  {% if is_dock %}
+  data-dock-for="{{ player_id }}"
+  hidden
+  {% else %}
+  data-episode-id="{{ include.episode_id }}"
+  data-title="{{ include.title | escape }}"
+  {% if include.duration %}data-duration-hint="{{ include.duration }}"{% endif %}
+  {% if include.image %}data-artwork="{{ include.image }}"{% endif %}
+  {% endif %}
+  role="region"
+  aria-label="{% if is_dock %}Avspiller (festet){% else %}Podcastavspiller{% endif %}"
+>
+  {% unless is_dock %}
+  <audio class="podcast-player__media" preload="metadata" src="{{ include.src }}"></audio>
+
+  <div class="podcast-player__resume" data-resume-banner hidden>
+    <p class="podcast-player__resume-text">
+      Fortsett fra <strong data-resume-label>0:00</strong>
+    </p>
+    <div class="podcast-player__resume-actions">
+      <button type="button" class="btn btn--accent" data-action="resume">Fortsett</button>
+      <button type="button" class="btn btn--ghost" data-action="restart">Start på nytt</button>
+    </div>
+  </div>
+  {% endunless %}
+
+  <div class="podcast-player__bar">
+    {% if is_dock %}
+    <p class="podcast-player__dock-title" data-dock-title>{{ include.title | escape }}</p>
+    {% endif %}
+
+    <button
+      type="button"
+      class="podcast-player__play"
+      data-action="toggle-play"
+      aria-label="Spill av"
+    >
+      <span class="podcast-player__icon podcast-player__icon--play" aria-hidden="true"></span>
+      <span class="podcast-player__icon podcast-player__icon--pause" aria-hidden="true"></span>
+    </button>
+
+    <div class="podcast-player__track-wrap">
+      <div class="podcast-player__times" aria-hidden="true">
+        <span data-time-current>0:00</span>
+        <span data-time-duration>{% if include.duration %}{{ include.duration }}{% else %}--:--{% endif %}</span>
+      </div>
+
+      <div class="podcast-player__seek">
+        <div class="podcast-player__seek-rail" data-seek-rail>
+          <div class="podcast-player__seek-buffer" data-seek-buffer></div>
+          <div class="podcast-player__seek-played" data-seek-played></div>
+        </div>
+        <input
+          type="range"
+          class="podcast-player__seek-input"
+          data-seek-input
+          min="0"
+          max="1000"
+          value="0"
+          step="1"
+          aria-label="Spol i episoden"
+          aria-valuemin="0"
+          aria-valuemax="0"
+          aria-valuenow="0"
+        >
+      </div>
+    </div>
+
+    {% unless is_dock %}
+    <div class="podcast-player__tools">
+      <button type="button" class="podcast-player__tool" data-action="skip" data-skip="-15" aria-label="Spol 15 sekunder tilbake">
+        −15
+      </button>
+      <button type="button" class="podcast-player__tool" data-action="skip" data-skip="30" aria-label="Spol 30 sekunder frem">
+        +30
+      </button>
+      <button type="button" class="podcast-player__tool podcast-player__tool--speed" data-action="speed" aria-label="Avspillingshastighet">
+        1×
+      </button>
+    </div>
+    {% endunless %}
+  </div>
+</div>
