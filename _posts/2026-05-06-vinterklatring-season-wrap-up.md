@@ -2,7 +2,7 @@
 layout: episode
 title: "Eivind Hugaas | Vinterklatring 2025 / 2026 season wrap up"
 date: 2026-05-06 12:00:00 +0000
-permalink: /episodes/vinterklatring-season-wrap-up/
+permalink: /episoder/vinterklatring-season-wrap-up/
 source: manual
 rss_guid: "69fa12eb2a1dd3f1a82c1eda"
 episode_number: 9

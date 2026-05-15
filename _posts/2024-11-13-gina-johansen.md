@@ -2,7 +2,7 @@
 layout: episode
 title: "Gina Johansen | Vil sette solo-rekord til Sydpolen"
 date: 2024-11-13 12:00:00 +0000
-permalink: /episodes/gina-johansen/
+permalink: /episoder/gina-johansen/
 source: manual
 rss_guid: "6729c4177c84f525cfdf9c13"
 episode_number: 5

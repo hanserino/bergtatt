@@ -3,7 +3,7 @@ layout: episode
 source: manual
 title: Krister Kopala | Sesongoppsummering Og Hardboot Splitboarding Do's And Dont's
 episode_slug: kopala
-permalink: /episodes/krister-kopala/
+permalink: /episoder/krister-kopala/
 date: 2024-06-06 12:00:00 +0000
 episode_number: 1
 duration: 1:30:03

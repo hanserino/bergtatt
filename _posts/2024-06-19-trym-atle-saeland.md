@@ -2,7 +2,7 @@
 layout: episode
 title: "Trym Atle Sæland | Kjerag, Cerro Torre, K2, Trollveggen, Marzigone Skole"
 date: 2024-06-19 12:00:00 +0000
-permalink: /episodes/trym-atle-saeland/
+permalink: /episoder/trym-atle-saeland/
 source: manual
 rss_guid: "664324c599027c0012f9b564"
 episode_number: 3

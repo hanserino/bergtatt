@@ -2,7 +2,7 @@
 layout: episode
 title: "Johan Wildhagen | The Event Horizon"
 date: 2025-12-11 12:00:00 +0000
-permalink: /episodes/johan-wildhagen-the-event-horizon/
+permalink: /episoder/johan-wildhagen-the-event-horizon/
 source: manual
 rss_guid: "6937d9e03d875cc25734c51d"
 episode_number: 6

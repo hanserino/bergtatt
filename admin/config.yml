@@ -51,7 +51,7 @@ collections:
         name: episode_slug
         widget: string
         required: true
-        hint: "Kun a–z, 0–9 og bindestrek. Brukes i filnavn og /episodes/…/"
+        hint: "Kun a–z, 0–9 og bindestrek. Brukes i filnavn og /episoder/…/"
         pattern:
           - "^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$"
           - "f.eks. aniek-lith-suser-gjennom-harryland"
@@ -60,10 +60,10 @@ collections:
         name: permalink
         widget: string
         required: true
-        hint: "Må matche slug, f.eks. /episodes/aniek-lith-suser-gjennom-harryland/"
+        hint: "Må matche slug, f.eks. /episoder/aniek-lith-suser-gjennom-harryland/"
         pattern:
-          - "^/episodes/[a-z0-9-]+/$"
-          - "Skal starte med /episodes/ og slutte med /"
+          - "^/episoder/[a-z0-9-]+/$"
+          - "Skal starte med /episoder/ og slutte med /"
 
       - label: Publiseringsdato
         name: date

@@ -216,7 +216,7 @@ def build_front_matter(
         "layout: episode",
         f"title: {q(title)}",
         f"date: {date_iso} 12:00:00 +0000",
-        f"permalink: /episodes/{slug}/",
+        f"permalink: /episoder/{slug}/",
         "source: acast-rss",
         f"rss_guid: {q(guid)}",
     ]

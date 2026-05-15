@@ -2,7 +2,7 @@
 layout: episode
 title: "Pål Oskar Engen | Skaperen av Fjelldatabasen.no"
 date: 2024-11-05 12:00:00 +0000
-permalink: /episodes/fjelldatabasen/
+permalink: /episoder/fjelldatabasen/
 source: manual
 rss_guid: "6728d83a5e15233c4077e2a1"
 episode_number: 4

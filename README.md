@@ -111,4 +111,4 @@ GitHub Actions bygger fortsatt med Ruby 3.4.8 på Linux (uten dette macOS/RVM-pr
 | `scripts/sync_episodes_from_rss.py` | Valgfri RSS-masseimport |
 | `scripts/jekyll.sh` | Kjør `bundle` med Homebrew Ruby |
 
-Offentlig URL for episoder: `/episodes/<acast-episode-slug>/`.
+Offentlig URL for episoder: `/episoder/<slug>/`.

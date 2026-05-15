@@ -2,7 +2,7 @@
 layout: episode
 title: "Tom Erik Heimen | 25 År Som Luftsportutøver"
 date: 2024-06-14 12:00:00 +0000
-permalink: /episodes/tom-erik-heimen/
+permalink: /episoder/tom-erik-heimen/
 source: manual
 rss_guid: "666c398695cd170012c33710"
 episode_number: 2

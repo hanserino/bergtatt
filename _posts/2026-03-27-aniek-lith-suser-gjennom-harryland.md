@@ -2,7 +2,7 @@
 layout: episode
 title: "Aniek Lith | Suser gjennom Harryland"
 date: 2026-03-27 12:00:00 +0000
-permalink: /episodes/aniek-lith-suser-gjennom-harryland/
+permalink: /episoder/aniek-lith-suser-gjennom-harryland/
 source: manual
 rss_guid: "69c670e5b991732771c76082"
 episode_number: 7
