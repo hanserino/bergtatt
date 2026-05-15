@@ -25,16 +25,15 @@ Terminal 2 — Decap (kobler til lokal Jekyll, ingen GitHub-login):
 npx decap-server
 ```
 
-Åpne http://localhost:8080/admin/ (Decap-server) eller http://localhost:4000/admin/ avhengig av oppsett — Decap viser vanligvis proxy på port 8081/8080. Standard: start `decap-server`, gå til **http://localhost:4000/admin/** med `local_backend: true` i `admin/config.yml`.
+Åpne **http://localhost:4000/admin/**. For lokal redigering uten GitHub-login: kjør `npx decap-server` og legg midlertidig `local_backend: true` i `admin/config.yml` (ikke push til `main`).
 
-### Produksjon (GitHub)
+### Produksjon (GitHub Pages)
 
-For å logge inn på https://bergtattpodcast.no/admin/ må du sette opp **GitHub OAuth** (GitHub Pages har ikke innebygd innlogging). Oversikt:
+Innlogging på https://bergtattpodcast.no/admin/ krever **OAuth-proxy** (samme oppsett som [curatedrunningpodcasts](https://github.com/hanserino/curatedrunningpodcasts)). Følg steg-for-steg:
 
-1. Opprett [GitHub OAuth App](https://github.com/settings/applications/new) for repoet `hanserino/bergtatt`.
-2. Deploy en liten [OAuth-proxy](https://decapcms.org/docs/github-backend/) (f.eks. på Vercel/Cloudflare).
-3. Fyll inn `base_url` og `auth_endpoint` i `admin/config.yml` (kommentert ut nå).
-4. Commit og push — deretter kan du redigere episoder i nettleseren; Decap lager commit på `main`, og GitHub Actions publiserer siden.
+**[admin/OAUTH-SETUP.md](admin/OAUTH-SETUP.md)**
+
+Kort: deploy Cloudflare Worker (`decap-proxy` + `admin/cloudflare-decap-wrangler.toml`), opprett GitHub OAuth App, sett secrets, fjern kommentar på `base_url` og `auth_endpoint` i `admin/config.yml`, commit og push.
 
 Nye episoder får `source: decap` og overskrives ikke av import-skriptet.
 

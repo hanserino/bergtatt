@@ -1,16 +1,17 @@
-# Decap CMS — manuell redigering av episoder
-# Produksjon: krever GitHub OAuth (se README → «Decap CMS»)
-# Lokalt: npx decap-server (med local_backend under)
-
-local_backend: true
+# Decap CMS — https://decapcms.org/
+# GitHub Pages trenger OAuth-proxy. Se admin/OAUTH-SETUP.md og fjern kommentar
+# på base_url + auth_endpoint når workeren er deployet.
 
 backend:
   name: github
   repo: hanserino/bergtatt
   branch: main
-  # Sett disse når OAuth-proxy er deployet (GitHub Pages har ikke innebygd auth):
-  # base_url: https://DIN-OAUTH-PROXY.example.com
-  # auth_endpoint: auth
+  # OAuth-proxy (Cloudflare Worker) — se admin/OAUTH-SETUP.md
+  base_url: https://bergtatt-decap-oauth.hanserino.workers.dev
+  auth_endpoint: /auth
+
+# Kun lokalt: npx decap-server (ikke commit til main)
+# local_backend: true
 
 site_url: https://bergtattpodcast.no
 display_url: https://bergtattpodcast.no

@@ -1,0 +1,20 @@
+# Kopier til decap-proxy-klonen som `wrangler.toml`:
+#   cp admin/cloudflare-decap-wrangler.toml tools/decap-proxy/wrangler.toml
+#
+# Deploy fra tools/decap-proxy:
+#   npm install && npx wrangler deploy
+#
+# Sett GitHub OAuth-secrets på workeren (mangler de → client_id=undefined i login-URL):
+#   npx wrangler secret put GITHUB_OAUTH_ID
+#   npx wrangler secret put GITHUB_OAUTH_SECRET
+
+#:schema node_modules/wrangler/config-schema.json
+
+compatibility_date = "2025-11-17"
+main = "src/index.ts"
+
+# URL blir: https://<name>.<account-subdomain>.workers.dev
+name = "bergtatt-decap-oauth"
+
+[vars]
+GITHUB_REPO_PRIVATE = "0"

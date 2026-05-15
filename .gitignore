@@ -5,3 +5,6 @@ _site
 vendor
 .bundle
 .DS_Store
+
+# decap-proxy-klone (se admin/OAUTH-SETUP.md)
+tools/decap-proxy/
