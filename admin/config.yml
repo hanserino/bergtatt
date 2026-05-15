@@ -33,9 +33,7 @@ collections:
     extension: md
     format: frontmatter
     create: true
-    slug:
-      encoding: ascii
-      clean_accents: true
+    slug: "{{year}}-{{month}}-{{day}}-{{episode_slug}}"
     fields:
       - label: Layout
         name: layout
