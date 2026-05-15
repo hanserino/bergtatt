@@ -1,27 +1,86 @@
 ---
 layout: default
+body_class: page-episode
 ---
-<article class="episode">
-  <header class="episode-header">
-    {% if page.image %}
-    <figure class="episode-art">
-      <img src="{{ page.image }}" alt="" width="640" height="640" loading="lazy">
-    </figure>
-    {% endif %}
-    <h1>{{ page.title }}</h1>
-    <p class="episode-meta">
-      {% if page.episode_number %}Episode {{ page.episode_number }}{% endif %}
-      {% if page.duration %} · {{ page.duration }}{% endif %}
-      {% if page.date %} · {{ page.date | date: "%Y-%m-%d" }}{% endif %}
-    </p>
-    {% if page.audio_url %}
-    <audio class="episode-player" controls preload="metadata" src="{{ page.audio_url }}"></audio>
-    {% endif %}
-    {% if page.acast_url %}
-    <p><a href="{{ page.acast_url }}">Åpne i Acast</a></p>
-    {% endif %}
+{% assign hero = page.hero_image | default: site.assets.hero_images.first %}
+
+<article class="episode" itemscope itemtype="https://schema.org/PodcastEpisode">
+  <header class="episode-hero">
+    <div class="episode-hero__bg" aria-hidden="true">
+      <img
+        src="{{ hero | relative_url }}"
+        alt=""
+        width="1920"
+        height="1080"
+        fetchpriority="high"
+        decoding="async"
+      >
+      <div class="episode-hero__veil"></div>
+    </div>
+    <div class="episode-hero__inner">
+      <a class="episode-hero__back" href="{{ '/' | relative_url }}#episoder">← Episoder</a>
+      {% if page.episode_number %}
+      <p class="episode-hero__label">Episode {{ page.episode_number }}</p>
+      {% endif %}
+      <h1 class="episode-hero__title" itemprop="name">{{ page.title }}</h1>
+      <p class="episode-hero__meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: '%d. %B %Y' }}</time>
+        {% if page.duration %}<span>{{ page.duration }}</span>{% endif %}
+      </p>
+    </div>
   </header>
-  <div class="episode-body">
-    {{ content }}
+
+  <div class="episode__layout">
+    <aside class="episode__media-col">
+      {% if page.image %}
+      <figure class="episode__art">
+        <img
+          src="{{ page.image }}"
+          alt="Episodekunst for {{ page.title | escape }}"
+          width="640"
+          height="640"
+          loading="lazy"
+          decoding="async"
+          itemprop="image"
+        >
+      </figure>
+      {% endif %}
+
+      {% if page.youtube_id %}
+      <section class="episode__video" aria-labelledby="video-heading">
+        <h2 id="video-heading" class="episode__subhead">Se på YouTube</h2>
+        {% include youtube-embed.html id=page.youtube_id url=page.youtube_url title=page.title %}
+      </section>
+      {% endif %}
+
+      {% if page.audio_url %}
+      <section class="episode__audio" aria-labelledby="audio-heading">
+        <h2 id="audio-heading" class="episode__subhead">Lytt</h2>
+        <audio
+          class="episode-player"
+          controls
+          preload="metadata"
+          src="{{ page.audio_url }}"
+          itemprop="associatedMedia"
+        ></audio>
+        {% if page.acast_url %}
+        <a class="episode__acast" href="{{ page.acast_url }}" rel="noopener noreferrer">Åpne i Acast</a>
+        {% endif %}
+      </section>
+      {% endif %}
+    </aside>
+
+    <div class="episode__notes">
+      <h2 class="episode__subhead">Shownotes</h2>
+      <div class="episode-body prose" itemprop="description">
+        {{ content }}
+      </div>
+    </div>
   </div>
 </article>
+
+{% if page.audio_url %}
+<div class="audio-dock" id="audio-dock" hidden>
+  <audio controls preload="none" src="{{ page.audio_url }}" aria-label="Spill av episode"></audio>
+</div>
+{% endif %}

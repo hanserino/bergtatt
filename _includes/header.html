@@ -1,0 +1,15 @@
+<header class="site-header" id="top">
+  <a class="site-header__logo" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} — forsiden">
+    <img src="{{ site.assets.logo_white | relative_url }}" alt="{{ site.title }}" width="160" height="48" decoding="async">
+  </a>
+  <button class="site-header__menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" id="menu-toggle">
+    <span class="visually-hidden">Meny</span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
+  <nav class="site-header__nav" id="site-nav" aria-label="Hovedmeny">
+    <a href="{{ '/' | relative_url }}#episoder">Episoder</a>
+    <a href="{{ site.links.acast }}" rel="noopener noreferrer">Lytt</a>
+    <a href="{{ site.links.instagram }}" rel="noopener noreferrer">Instagram</a>
+  </nav>
+</header>

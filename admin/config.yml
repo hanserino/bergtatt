@@ -1,0 +1,148 @@
+# Decap CMS — manuell redigering av episoder
+# Produksjon: krever GitHub OAuth (se README → «Decap CMS»)
+# Lokalt: npx decap-server (med local_backend under)
+
+local_backend: true
+
+backend:
+  name: github
+  repo: hanserino/bergtatt
+  branch: main
+  # Sett disse når OAuth-proxy er deployet (GitHub Pages har ikke innebygd auth):
+  # base_url: https://DIN-OAUTH-PROXY.example.com
+  # auth_endpoint: auth
+
+site_url: https://bergtattpodcast.no
+display_url: https://bergtattpodcast.no
+logo_url: https://bergtattpodcast.no/assets/logo/bergtatt-black.png
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: episodes
+    label: Episoder
+    label_singular: Episode
+    folder: "_posts"
+    path: "{{year}}-{{month}}-{{day}}-{{episode_slug}}"
+    extension: md
+    format: frontmatter
+    create: true
+    slug:
+      encoding: ascii
+      clean_accents: true
+    fields:
+      - label: Layout
+        name: layout
+        widget: hidden
+        default: episode
+
+      - label: Kilde
+        name: source
+        widget: hidden
+        default: decap
+
+      - { label: Tittel, name: title, widget: string, required: true }
+
+      - label: URL-slug
+        name: episode_slug
+        widget: string
+        required: true
+        hint: "Kun a–z, 0–9 og bindestrek. Brukes i filnavn og /episodes/…/"
+        pattern:
+          - "^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$"
+          - "f.eks. aniek-lith-suser-gjennom-harryland"
+
+      - label: Permalink
+        name: permalink
+        widget: string
+        required: true
+        hint: "Må matche slug, f.eks. /episodes/aniek-lith-suser-gjennom-harryland/"
+        pattern:
+          - "^/episodes/[a-z0-9-]+/$"
+          - "Skal starte med /episodes/ og slutte med /"
+
+      - label: Publiseringsdato
+        name: date
+        widget: datetime
+        required: true
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+        format: "YYYY-MM-DD HH:mm:ss Z"
+
+      - label: Episodenummer
+        name: episode_number
+        widget: number
+        required: false
+        value_type: int
+        min: 1
+
+      - label: Varighet
+        name: duration
+        widget: string
+        required: false
+        hint: "f.eks. 53:48"
+
+      - label: Kort beskrivelse (SEO)
+        name: description
+        widget: text
+        required: false
+        hint: "Vises i Google og deling på sosiale medier (maks ca. 160 tegn)."
+
+      - label: Episodetype
+        name: episode_type
+        widget: select
+        default: full
+        options:
+          - { label: Full episode, value: full }
+          - { label: Trailer, value: trailer }
+          - { label: Bonus, value: bonus }
+
+      - label: Fjellbilde (kort / hero)
+        name: hero_image
+        widget: select
+        required: false
+        default: "/assets/images/1.jpeg"
+        options:
+          - { label: Bilde 1, value: "/assets/images/1.jpeg" }
+          - { label: Bilde 2, value: "/assets/images/2.jpeg" }
+          - { label: Bilde 3, value: "/assets/images/3.jpeg" }
+          - { label: Bilde 4, value: "/assets/images/4.jpeg" }
+          - { label: Bilde 5, value: "/assets/images/5.jpeg" }
+
+      - label: Episodekunst (URL)
+        name: image
+        widget: string
+        required: false
+        hint: "Bilde-URL fra Acast/Spotify, eller last opp under «Media» og lim inn stien."
+
+      - label: Lyd (MP3-URL)
+        name: audio_url
+        widget: string
+        required: false
+
+      - label: Acast-lenke
+        name: acast_url
+        widget: string
+        required: false
+
+      - label: YouTube video-ID
+        name: youtube_id
+        widget: string
+        required: false
+        hint: "Kun ID-en, f.eks. LrPQRkNzLsk (fra youtu.be/… eller watch?v=…)"
+
+      - label: YouTube-lenke
+        name: youtube_url
+        widget: string
+        required: false
+
+      - label: Shownotes
+        name: body
+        widget: markdown
+        required: true

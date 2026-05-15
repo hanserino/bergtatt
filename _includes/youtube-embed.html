@@ -1,0 +1,19 @@
+{% if include.id %}
+<div class="youtube-embed" role="region" aria-label="Video på YouTube">
+  <div class="youtube-embed__frame">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/{{ include.id }}?rel=0"
+      title="{{ include.title | default: 'Episode på YouTube' | escape }}"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
+  </div>
+  {% if include.url %}
+  <p class="youtube-embed__link">
+    <a href="{{ include.url }}" rel="noopener noreferrer">Åpne på YouTube</a>
+  </p>
+  {% endif %}
+</div>
+{% endif %}

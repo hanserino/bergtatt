@@ -2,17 +2,51 @@
 
 Statisk nettside for podcasten **Bergtatt**, bygget med [Jekyll](https://jekyllrb.com/) og ment for [GitHub Pages](https://pages.github.com/) med domenet [bergtattpodcast.no](https://bergtattpodcast.no).
 
-## Episoder fra RSS
+## Publisere episoder (Decap CMS)
 
-Episoder i `_posts/` genereres fra Acast-RSS (shownotes som HTML, permalenker, lyd-URL, bilde osv.):
+Episoder redigeres **manuelt** i [Decap CMS](https://decapcms.org/) — ikke automatisk fra RSS.
+
+| Miljø | URL |
+|--------|-----|
+| Produksjon | https://bergtattpodcast.no/admin/ |
+| Lokalt | http://localhost:4000/admin/ (med `jekyll serve` + `decap-server`) |
+
+### Lokalt redigeringsoppsett
+
+Terminal 1 — nettsiden:
+
+```bash
+./scripts/jekyll.sh exec jekyll serve
+```
+
+Terminal 2 — Decap (kobler til lokal Jekyll, ingen GitHub-login):
+
+```bash
+npx decap-server
+```
+
+Åpne http://localhost:8080/admin/ (Decap-server) eller http://localhost:4000/admin/ avhengig av oppsett — Decap viser vanligvis proxy på port 8081/8080. Standard: start `decap-server`, gå til **http://localhost:4000/admin/** med `local_backend: true` i `admin/config.yml`.
+
+### Produksjon (GitHub)
+
+For å logge inn på https://bergtattpodcast.no/admin/ må du sette opp **GitHub OAuth** (GitHub Pages har ikke innebygd innlogging). Oversikt:
+
+1. Opprett [GitHub OAuth App](https://github.com/settings/applications/new) for repoet `hanserino/bergtatt`.
+2. Deploy en liten [OAuth-proxy](https://decapcms.org/docs/github-backend/) (f.eks. på Vercel/Cloudflare).
+3. Fyll inn `base_url` og `auth_endpoint` i `admin/config.yml` (kommentert ut nå).
+4. Commit og push — deretter kan du redigere episoder i nettleseren; Decap lager commit på `main`, og GitHub Actions publiserer siden.
+
+Nye episoder får `source: decap` og overskrives ikke av import-skriptet.
+
+### Valgfritt: masseimport fra RSS
+
+Kun hvis du vil hente mange episoder fra Acast på en gang:
 
 ```bash
 python3 scripts/sync_episodes_from_rss.py
 ```
 
-Valgfritt: `export BERGTATT_RSS_URL="https://..."` for annen feed-URL.
-
-Filer som er synket merkes med `source: acast-rss` i front matter. Synk **sletter** slike filer og skriver dem på nytt — ikke rediger manuelt i disse filene hvis du vil beholde endringene.
+Dette **sletter kun** filer merket `source: acast-rss`. Eksisterende episoder er markert `source: manual` og røres ikke.
 
 ## Lokal forhåndsvisning (anbefalt: Homebrew Ruby)
 
@@ -68,11 +102,13 @@ GitHub Actions bygger fortsatt med Ruby 3.4.8 på Linux (uten dette macOS/RVM-pr
 
 | Sted | Formål |
 |------|--------|
-| `_posts/` | Én Jekyll-post per episode (generert) |
+| `admin/` | Decap CMS (`config.yml`, `index.html`) |
+| `_posts/` | Én Jekyll-post per episode (manuell via Decap) |
 | `_layouts/` | `default` (ramme), `episode` (episode-side) |
 | `assets/css/site.css` | Enkel CSS — kan byttes ut i design-runden |
 | `CNAME` | Peeker GitHub Pages mot `bergtattpodcast.no` |
-| `scripts/sync_episodes_from_rss.py` | RSS → Markdown |
+| `assets/uploads/` | Bilder lastet opp via Decap |
+| `scripts/sync_episodes_from_rss.py` | Valgfri RSS-masseimport |
 | `scripts/jekyll.sh` | Kjør `bundle` med Homebrew Ruby |
 
 Offentlig URL for episoder: `/episodes/<acast-episode-slug>/`.

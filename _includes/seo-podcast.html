@@ -1,0 +1,22 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  "name": {{ site.title | jsonify }},
+  "description": {{ site.description | jsonify }},
+  "url": {{ site.url | jsonify }},
+  "inLanguage": "nb",
+  "author": {
+    "@type": "Person",
+    "name": {{ site.author.name | jsonify }},
+    "url": {{ site.author.url | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.publisher.name | jsonify }},
+    "url": {{ site.publisher.url | jsonify }}
+  },
+  "image": {{ site.assets.cover | absolute_url | jsonify }},
+  "webFeed": {{ site.links.rss | jsonify }}
+}
+</script>

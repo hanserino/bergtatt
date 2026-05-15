@@ -1,0 +1,31 @@
+{% assign post = include.post %}
+{% assign idx = include.index | default: 0 %}
+{% assign heroes = site.assets.hero_images %}
+{% assign hero_idx = idx | modulo: heroes.size %}
+{% assign hero = post.hero_image | default: heroes[hero_idx] %}
+<article class="episode-card{% if include.featured %} episode-card--featured{% endif %}">
+  <a class="episode-card__link" href="{{ post.url | relative_url }}">
+    <div class="episode-card__visual">
+      <img
+        src="{{ hero | relative_url }}"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        width="800"
+        height="1200"
+      >
+      <div class="episode-card__overlay" aria-hidden="true"></div>
+      {% if post.episode_number %}
+      <span class="episode-card__num">{{ post.episode_number | prepend: '0' | slice: -2, 2 }}</span>
+      {% endif %}
+    </div>
+    <div class="episode-card__body">
+      <h2 class="episode-card__title">{{ post.title }}</h2>
+      <p class="episode-card__meta">
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%d.%m.%Y' }}</time>
+        {% if post.duration %}<span>{{ post.duration }}</span>{% endif %}
+        {% if post.youtube_id %}<span class="episode-card__yt" aria-label="Finnes på YouTube">▶</span>{% endif %}
+      </p>
+    </div>
+  </a>
+</article>

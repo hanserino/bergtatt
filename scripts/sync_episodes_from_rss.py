@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """
-Henter Bergtatt-podcastens RSS-feed og skriver Jekyll-poster til _posts/.
+Valgfritt: importer episoder fra Acast-RSS til _posts/.
 
-Kjør fra repo-roten:
+Nettsiden publiseres normalt via Decap CMS (admin/) — ikke kjør dette skriptet
+med mindre du bevisst vil masse-importere eller oppdatere fra feed.
+
+Sletter og overskriver KUN filer med «source: acast-rss» i front matter.
+Poster med «source: manual» eller «source: decap» røres ikke.
+
   python3 scripts/sync_episodes_from_rss.py
 
 Miljøvariabel BERGTATT_RSS_URL overstyrer feed-URL.
@@ -10,6 +15,7 @@ Miljøvariabel BERGTATT_RSS_URL overstyrer feed-URL.
 from __future__ import annotations
 
 import email.utils
+import html
 import os
 import re
 import sys
@@ -19,6 +25,18 @@ from pathlib import Path
 
 FEED_URL = os.environ.get(
     "BERGTATT_RSS_URL", "https://feeds.acast.com/public/shows/bergtatt"
+)
+
+HERO_IMAGES = [
+    "/assets/images/1.jpeg",
+    "/assets/images/2.jpeg",
+    "/assets/images/3.jpeg",
+    "/assets/images/4.jpeg",
+    "/assets/images/5.jpeg",
+]
+
+YOUTUBE_RE = re.compile(
+    r"(?:youtube\.com/watch\?v=|youtu\.be/|youtube\.com/embed/)([a-zA-Z0-9_-]{11})"
 )
 
 ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
@@ -36,6 +54,23 @@ def q(s: str) -> str:
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
+def extract_youtube(html: str) -> tuple[str | None, str | None]:
+    m = YOUTUBE_RE.search(html or "")
+    if not m:
+        return None, None
+    vid = m.group(1)
+    return vid, f"https://www.youtube.com/watch?v={vid}"
+
+
+def plain_excerpt(html: str, max_len: int = 160) -> str:
+    text = re.sub(r"<[^>]+>", " ", html or "")
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= max_len:
+        return text
+    cut = text[: max_len - 1].rsplit(" ", 1)[0]
+    return cut + "…"
+
+
 def strip_acast_boilerplate(html: str) -> str:
     if not html:
         return ""
@@ -45,6 +80,37 @@ def strip_acast_boilerplate(html: str) -> str:
         html,
         flags=re.IGNORECASE | re.DOTALL,
     ).strip()
+
+
+def html_to_markdown(raw: str) -> str:
+    """Konverter Acast-shownotes (HTML) til Markdown for lint-vennlige _posts."""
+    text = html.unescape(raw or "")
+    text = re.sub(r"<br\s*/?>", "\n\n", text, flags=re.IGNORECASE)
+    text = re.sub(r"</p>\s*", "\n\n", text, flags=re.IGNORECASE)
+    text = re.sub(r"<p[^>]*>", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"<em>(.*?)</em>", r"*\1*", text, flags=re.IGNORECASE | re.DOTALL)
+    text = re.sub(
+        r"<strong>(.*?)</strong>", r"**\1**", text, flags=re.IGNORECASE | re.DOTALL
+    )
+    def _link_md(match: re.Match[str]) -> str:
+        url = match.group(1).strip()
+        label = re.sub(r"\s+", " ", match.group(2)).strip()
+        return f"[{label}]({url})"
+
+    text = re.sub(
+        r'<a\s+[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+        _link_md,
+        text,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    text = re.sub(r"<li[^>]*>", "- ", text, flags=re.IGNORECASE)
+    text = re.sub(r"</li>", "\n", text, flags=re.IGNORECASE)
+    text = re.sub(r"</?ul[^>]*>", "\n", text, flags=re.IGNORECASE)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = re.sub(r"[ \t]+\n", "\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    text = re.sub(r" +", " ", text)
+    return text.strip()
 
 
 def parse_pub_date(text: str | None) -> str | None:
@@ -119,7 +185,7 @@ def is_managed_post(path: Path) -> bool:
     if end == -1:
         return False
     fm = text[3:end]
-    return "source: acast-rss" in fm
+    return "source: acast-rss" in fm  # kun RSS-importerte utkast
 
 
 def remove_old_generated(posts_dir: Path) -> None:
@@ -140,6 +206,10 @@ def build_front_matter(
     image: str | None,
     acast_url: str | None,
     episode_type: str | None,
+    description: str | None,
+    youtube_id: str | None,
+    youtube_url: str | None,
+    hero_image: str | None,
 ) -> str:
     lines = [
         "---",
@@ -162,6 +232,14 @@ def build_front_matter(
         lines.append(f"acast_url: {q(acast_url)}")
     if episode_type:
         lines.append(f"episode_type: {q(episode_type)}")
+    if description:
+        lines.append(f"description: {q(description)}")
+    if youtube_id:
+        lines.append(f"youtube_id: {q(youtube_id)}")
+    if youtube_url:
+        lines.append(f"youtube_url: {q(youtube_url)}")
+    if hero_image:
+        lines.append(f"hero_image: {q(hero_image)}")
     lines.append("---")
     return "\n".join(lines) + "\n"
 
@@ -185,7 +263,7 @@ def main() -> int:
         return 1
 
     to_write: list[tuple[Path, str]] = []
-    for item in channel.findall("item"):
+    for idx, item in enumerate(channel.findall("item")):
         title = t(item, "title") or "Uten tittel"
         guid = t(item, "guid") or ""
         pub = parse_pub_date(t(item, "pubDate"))
@@ -202,7 +280,11 @@ def main() -> int:
         audio_url = enc.get("url") if enc is not None else None
         acast_url = t(item, "link")
         desc = t(item, "description") or itunes_text(item, "summary")
-        body = strip_acast_boilerplate(desc or "")
+        html_body = strip_acast_boilerplate(desc or "")
+        youtube_id, youtube_url = extract_youtube(html_body)
+        excerpt = plain_excerpt(html_body)
+        body = html_to_markdown(html_body)
+        hero_image = HERO_IMAGES[idx % len(HERO_IMAGES)]
 
         fm = build_front_matter(
             title=title,
@@ -215,6 +297,10 @@ def main() -> int:
             image=image,
             acast_url=acast_url,
             episode_type=episode_type,
+            description=excerpt or None,
+            youtube_id=youtube_id,
+            youtube_url=youtube_url,
+            hero_image=hero_image,
         )
 
         path = posts_dir / f"{pub}-{slug}.md"

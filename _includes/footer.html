@@ -1,0 +1,13 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__brand">{{ site.title | upcase }}</p>
+    <p class="site-footer__tag">{{ site.tagline }}</p>
+    <ul class="site-footer__links">
+      <li><a href="{{ site.links.acast }}" rel="noopener noreferrer">Acast</a></li>
+      <li><a href="{{ site.links.rss }}">RSS</a></li>
+      <li><a href="{{ site.author.url }}" rel="noopener noreferrer">{{ site.author.name }}</a></li>
+      <li><a href="{{ site.publisher.url }}" rel="noopener noreferrer">{{ site.publisher.name }}</a></li>
+    </ul>
+    <p class="site-footer__copy">© {{ 'now' | date: '%Y' }} {{ site.title }}</p>
+  </div>
+</footer>

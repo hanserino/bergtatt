@@ -1,0 +1,56 @@
+{% assign ep_desc = page.description | default: page.excerpt | strip_html | strip_newlines | truncate: 300 %}
+{% if page.youtube_id %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PodcastEpisode",
+  "name": {{ page.title | jsonify }},
+  "description": {{ ep_desc | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "inLanguage": "nb",
+  "partOfSeries": {
+    "@type": "PodcastSeries",
+    "name": {{ site.title | jsonify }},
+    "url": {{ site.url | jsonify }}
+  },
+  {% if page.episode_number %}"episodeNumber": "{{ page.episode_number }}",{% endif %}
+  {% if page.audio_url %}"associatedMedia": {
+    "@type": "MediaObject",
+    "contentUrl": {{ page.audio_url | jsonify }},
+    "encodingFormat": "audio/mpeg"
+  },{% endif %}
+  "image": {{ page.image | default: site.assets.cover | absolute_url | jsonify }},
+  "video": {
+    "@type": "VideoObject",
+    "name": {{ page.title | jsonify }},
+    "embedUrl": "https://www.youtube-nocookie.com/embed/{{ page.youtube_id }}",
+    "thumbnailUrl": "https://i.ytimg.com/vi/{{ page.youtube_id }}/hqdefault.jpg"
+  }
+}
+</script>
+{% else %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PodcastEpisode",
+  "name": {{ page.title | jsonify }},
+  "description": {{ ep_desc | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "inLanguage": "nb",
+  "partOfSeries": {
+    "@type": "PodcastSeries",
+    "name": {{ site.title | jsonify }},
+    "url": {{ site.url | jsonify }}
+  },
+  {% if page.episode_number %}"episodeNumber": "{{ page.episode_number }}",{% endif %}
+  {% if page.audio_url %}"associatedMedia": {
+    "@type": "MediaObject",
+    "contentUrl": {{ page.audio_url | jsonify }},
+    "encodingFormat": "audio/mpeg"
+  },{% endif %}
+  "image": {{ page.image | default: site.assets.cover | absolute_url | jsonify }}
+}
+</script>
+{% endif %}

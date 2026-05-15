@@ -1,9 +1,19 @@
 title: Bergtatt
 description: >-
-  En podcast om bratt friluftsliv av Hans Kristian Smedsrød for NÅ ER DET ALVOR.
+  Podcast om bratt friluftsliv — alpinisme, randonee, BASE og fjellsport med høy innsats og åpent sinn.
+tagline: Bratt friluftsliv
 url: "https://bergtattpodcast.no"
 baseurl: ""
 lang: nb
+locale: nb_NO
+
+author:
+  name: Hans Kristian Smedsrød
+  url: "https://www.instagram.com/hanserino/"
+
+publisher:
+  name: NÅ ER DET ALVOR
+  url: "https://www.naerdetalvor.no/"
 
 permalink: pretty
 
@@ -15,9 +25,29 @@ kramdown:
 
 plugins: []
 
+# Eksterne lenker
+links:
+  acast: "https://shows.acast.com/bergtatt"
+  rss: "https://feeds.acast.com/public/shows/bergtatt"
+  instagram: "https://www.instagram.com/bergtatt_pod/"
+
+# Lokale assets
+assets:
+  cover: "/assets/other/bergtatt-podcast-cover.jpg"
+  logo_white: "/assets/logo/bergtatt-white.png"
+  logo_black: "/assets/logo/bergtatt-black.png"
+  hero_images:
+    - "/assets/images/1.jpeg"
+    - "/assets/images/2.jpeg"
+    - "/assets/images/3.jpeg"
+    - "/assets/images/4.jpeg"
+    - "/assets/images/5.jpeg"
+
+# admin/ publiseres bevisst (Decap CMS på /admin/)
 exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
   - scripts
   - vendor
+  - .DS_Store
