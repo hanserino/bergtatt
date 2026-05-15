@@ -391,34 +391,30 @@ a:hover {
   border: 1px solid var(--line);
 }
 
-/* Gallery strip */
-.gallery {
-  overflow: hidden;
-  border-block: 1px solid var(--line);
-  padding: 0.5rem 0;
-}
-
-.gallery__track {
+.listen__cover-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  width: max-content;
-  animation: marquee 40s linear infinite;
+  margin-top: 1rem;
+  padding: 0;
+  transform: rotate(2deg);
 }
 
-.gallery__track img {
-  height: clamp(8rem, 22vw, 14rem);
-  width: auto;
-  object-fit: cover;
-  filter: grayscale(30%) contrast(1.1);
+.btn--platform {
+  flex: 1 1 auto;
+  min-width: 8rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.7rem;
+  text-align: center;
+  background: var(--bg-soft);
+  color: var(--fg);
+  border-color: var(--line);
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+.btn--platform:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg);
 }
 
 /* Episodes grid */

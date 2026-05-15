@@ -43,6 +43,8 @@ body_class: page-home
       <h2 id="listen-heading" class="section-title">Lytt hvor du vil</h2>
       <p>Seriøse samtaler om bratt terreng — høy innsats, åpent sinn. Podcasten produseres for <a href="{{ site.publisher.url }}" rel="noopener noreferrer">{{ site.publisher.name }}</a>.</p>
       <ul class="listen__platforms">
+        <li><a href="{{ site.links.spotify }}" rel="noopener noreferrer">Spotify</a></li>
+        <li><a href="{{ site.links.apple_podcasts }}" rel="noopener noreferrer">Apple Podcasts</a></li>
         <li><a href="{{ site.links.acast }}" rel="noopener noreferrer">Acast</a></li>
         <li><a href="{{ site.links.rss }}">RSS-feed</a></li>
         <li><a href="{{ site.links.instagram }}" rel="noopener noreferrer">Instagram</a></li>
@@ -57,18 +59,11 @@ body_class: page-home
         loading="lazy"
         decoding="async"
       >
+      <figcaption class="listen__cover-actions">
+        <a class="btn btn--platform" href="{{ site.links.spotify }}" rel="noopener noreferrer">Spotify</a>
+        <a class="btn btn--platform" href="{{ site.links.apple_podcasts }}" rel="noopener noreferrer">Apple Podcasts</a>
+      </figcaption>
     </figure>
-  </div>
-</section>
-
-<section class="gallery" aria-hidden="true">
-  <div class="gallery__track">
-    {% for img in site.assets.hero_images %}
-    <img src="{{ img | relative_url }}" alt="" loading="lazy" decoding="async" width="600" height="900">
-    {% endfor %}
-    {% for img in site.assets.hero_images %}
-    <img src="{{ img | relative_url }}" alt="" loading="lazy" decoding="async" width="600" height="900" aria-hidden="true">
-    {% endfor %}
   </div>
 </section>
 

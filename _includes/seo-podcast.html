@@ -17,6 +17,12 @@
     "url": {{ site.publisher.url | jsonify }}
   },
   "image": {{ site.assets.cover | absolute_url | jsonify }},
-  "webFeed": {{ site.links.rss | jsonify }}
+  "webFeed": {{ site.links.rss | jsonify }},
+  "sameAs": [
+    {{ site.links.spotify | jsonify }},
+    {{ site.links.apple_podcasts | jsonify }},
+    {{ site.links.acast | jsonify }},
+    {{ site.links.instagram | jsonify }}
+  ]
 }
 </script>

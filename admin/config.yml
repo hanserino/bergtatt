@@ -101,23 +101,17 @@ collections:
           - { label: Trailer, value: trailer }
           - { label: Bonus, value: bonus }
 
-      - label: Fjellbilde (kort / hero)
+      - label: Kort / hero
         name: hero_image
-        widget: select
+        widget: image
         required: false
-        default: "/assets/images/1.jpeg"
-        options:
-          - { label: Bilde 1, value: "/assets/images/1.jpeg" }
-          - { label: Bilde 2, value: "/assets/images/2.jpeg" }
-          - { label: Bilde 3, value: "/assets/images/3.jpeg" }
-          - { label: Bilde 4, value: "/assets/images/4.jpeg" }
-          - { label: Bilde 5, value: "/assets/images/5.jpeg" }
+        hint: "Bakgrunnsbilde på episoden og i episodelisten. Last opp her, eller behold eksisterende sti."
 
-      - label: Episodekunst (URL)
+      - label: Episodekunst
         name: image
-        widget: string
+        widget: image
         required: false
-        hint: "Bilde-URL fra Acast/Spotify, eller last opp under «Media» og lim inn stien."
+        hint: "Kvadratisk cover i episodelisten og for deling (Open Graph). Last opp her."
 
       - label: Lyd (MP3-URL)
         name: audio_url

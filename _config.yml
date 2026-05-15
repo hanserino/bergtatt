@@ -27,6 +27,8 @@ plugins: []
 
 # Eksterne lenker
 links:
+  spotify: "https://open.spotify.com/show/0k9LHTQE8UqzSsSciUQpnA"
+  apple_podcasts: "https://podcasts.apple.com/us/podcast/bergtatt/id1744537974"
   acast: "https://shows.acast.com/bergtatt"
   rss: "https://feeds.acast.com/public/shows/bergtatt"
   instagram: "https://www.instagram.com/bergtatt_pod/"

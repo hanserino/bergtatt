@@ -38,9 +38,4 @@
       });
     }
   }
-
-  var gallery = document.querySelector(".gallery__track");
-  if (gallery && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    gallery.style.animation = "none";
-  }
 })();
