@@ -1,0 +1,16 @@
+---
+layout: episode
+title: "Trym Atle Sæland | Kjerag, Cerro Torre, K2, Trollveggen, Marzigone Skole"
+date: 2024-06-19 12:00:00 +0000
+permalink: /episodes/trym-atle-saeland/
+source: acast-rss
+rss_guid: "664324c599027c0012f9b564"
+episode_number: 3
+duration: "1:44:45"
+audio_url: "https://sphinx.acast.com/p/open/s/6634a0a237ac170013034743/e/664324c599027c0012f9b564/media.mp3"
+image: "https://assets.pippa.io/shows/6634a0a237ac170013034743/1718798629019-ab38facb52ff4bedaca2246a5f3fba02.jpeg"
+acast_url: "https://shows.acast.com/bergtatt/episodes/trym-atle-saeland"
+episode_type: "full"
+---
+
+<p><a href="https://www.instagram.com/trymatlesaeland/" rel="noopener noreferrer" target="_blank">Trym Atle Sæland</a> begynte å klatre tidlig på 90-tallet i hjembyen Stavanger, og ble fort besatt av Kjerag i Lysefjorden. Her tilbragte han stort sett all fritid hele dette tiåret, og sammen med den nå avdøde klatrepartneren Stein-Ivar Gravdal etablerte de noen legendariske ruter, som blant annet:</p><ul><li>Hoka Hey, en rute gradert 7+ på 20 taulengder, som kanskje er den fineste storveggsruta på den graden i Norge og er blitt en milepæl for den aspirerende storveggsklatreren.</li><li>Hundreårsbølgen – En rute gradert A3+ på 15 taulengder i den såkalte Smellveggen.</li><li>Tsunami - en rute på 1000 meter gradert til A4 av Trym og Stein-Ivar og senere gått i fri av Martin Skaar Olslund og Sindre Sæther i grad 8a+ med laaaaange utklatringer. I følge boka Norsk Fjellsport Gjennom 200 år er Tsunami «kanskje den hardeste storveggslinjen førstebesteget av nordmenn i Norge», utsagnet kan sies å gjelde både Trym og Stein-Ivar sin førstebestigning samt den senere frirepetisjonen. En veldig stolt linje..</li></ul><p><br></p><p>Etter herjingen på Kjerag dro han etter hvert ut til det store utland; Han har blant annet vært i Alpene, Patagonia, Alaska, Yosemite og Pakistan. Noen nevneverdige ruter og ekspedisjoner er Moonflower Buttress på Mount Hunter i Alaska sammen med Ole Lied, førstebestigning av Korketrekkerruta på Cerro Torre i Patagonia (også med Ole Lied). Og ja, han har også klatret Trollveggen. Norskeruta, sådan, og det gjorde han sammen med Sigurd Backe. Han har også herjet en god del på is, med blant annet en førstebestigning sammen med Sindre Sæther på Brudesløret i Romsdalen, gradert til isgrad 5+.&nbsp;</p><br><p>Bli kjent med Trym i dagens episode av Bergtatt.</p><br><p><strong>Lenker / referanser:</strong></p><p><br></p><ul><li><a href="https://www.thebmc.co.uk/norwegians-climb-cerro-torres-spiral-route" rel="noopener noreferrer" target="_blank">https://www.thebmc.co.uk/norwegians-climb-cerro-torres-spiral-route</a></li><li><a href="https://colinhaley.blogspot.com/2013/01/the-corkscrew.html" rel="noopener noreferrer" target="_blank">https://colinhaley.blogspot.com/2013/01/the-corkscrew.html</a></li><li><a href="https://www.friflyt.no/klatring/klar-for-k2" rel="noopener noreferrer" target="_blank">https://www.friflyt.no/klatring/klar-for-k2</a></li><li><a href="https://borebloggen.blogspot.com/2015/08/trym-sland-og-sigurd-backe-klatrer.html" rel="noopener noreferrer" target="_blank">https://borebloggen.blogspot.com/2015/08/trym-sland-og-sigurd-backe-klatrer.html</a></li></ul>

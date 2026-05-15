@@ -1,0 +1,23 @@
+title: Bergtatt
+description: >-
+  En podcast om bratt friluftsliv av Hans Kristian Smedsrød for NÅ ER DET ALVOR.
+url: "https://bergtattpodcast.no"
+baseurl: ""
+lang: nb
+
+permalink: pretty
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+plugins: []
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - scripts
+  - vendor

@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article class="episode">
+  <header class="episode-header">
+    {% if page.image %}
+    <figure class="episode-art">
+      <img src="{{ page.image }}" alt="" width="640" height="640" loading="lazy">
+    </figure>
+    {% endif %}
+    <h1>{{ page.title }}</h1>
+    <p class="episode-meta">
+      {% if page.episode_number %}Episode {{ page.episode_number }}{% endif %}
+      {% if page.duration %} · {{ page.duration }}{% endif %}
+      {% if page.date %} · {{ page.date | date: "%Y-%m-%d" }}{% endif %}
+    </p>
+    {% if page.audio_url %}
+    <audio class="episode-player" controls preload="metadata" src="{{ page.audio_url }}"></audio>
+    {% endif %}
+    {% if page.acast_url %}
+    <p><a href="{{ page.acast_url }}">Åpne i Acast</a></p>
+    {% endif %}
+  </header>
+  <div class="episode-body">
+    {{ content }}
+  </div>
+</article>
