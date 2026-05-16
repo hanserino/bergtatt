@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'nb' }}">
 {% include head.html %}
-<body class="{% if page.body_class %}{{ page.body_class }}{% elsif layout.body_class %}{{ layout.body_class }}{% endif %}">
+<body class="{% if page.body_class %}{{ page.body_class }}{% elsif layout.body_class %}{{ layout.body_class }}{% endif %}"{% if site.assets.header_images.size > 0 %} data-header-images='[{% for img in site.assets.header_images %}{{ img | relative_url | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}]'{% endif %}>
   <a class="skip-link" href="#main">Hopp til innhold</a>
   {% include header.html %}
   <main id="main" class="site-main">
     {{ content }}
   </main>
   {% include footer.html %}
+  {% include random-header-init.html %}
   <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
 </body>
 </html>

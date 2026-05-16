@@ -1,0 +1,58 @@
+{% if site.assets.header_images.size > 0 %}
+<script>
+(function () {
+  function getHeaderUrls() {
+    var raw = document.body.getAttribute("data-header-images");
+    if (!raw) {
+      var el = document.getElementById("site-header-images");
+      if (!el) return [];
+      raw = el.textContent;
+    }
+    try {
+      return JSON.parse(raw).filter(function (url) {
+        return url.indexOf("/assets/headers/") !== -1;
+      });
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function pathFromSrc(src) {
+    if (!src) return "";
+    var path = src.split("?")[0];
+    try {
+      path = new URL(path, window.location.origin).pathname;
+    } catch (e) {}
+    return path;
+  }
+
+  function pickRandom(urls, currentPath) {
+    if (!urls.length) return "";
+    var pool = urls;
+    if (urls.length > 1 && currentPath) {
+      var alt = urls.filter(function (url) {
+        return currentPath.indexOf(url) === -1;
+      });
+      if (alt.length) pool = alt;
+    }
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  function applyRandomHeaderImages() {
+    var urls = getHeaderUrls();
+    if (!urls.length) return;
+
+    document.querySelectorAll("[data-random-header]").forEach(function (wrap) {
+      var img = wrap.querySelector("img");
+      if (!img) return;
+      var currentPath = pathFromSrc(img.getAttribute("src") || img.currentSrc || "");
+      var next = pickRandom(urls, currentPath);
+      if (next) img.src = next;
+    });
+  }
+
+  applyRandomHeaderImages();
+  window.addEventListener("pageshow", applyRandomHeaderImages);
+})();
+</script>
+{% endif %}
