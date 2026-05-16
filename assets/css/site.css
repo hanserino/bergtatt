@@ -285,16 +285,31 @@ a:hover {
 }
 
 .hero__veil,
-.episode-hero__veil,
-.episode-card__overlay {
+.episode-hero__veil {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     165deg,
-    rgba(7, 7, 7, 0.35) 0%,
-    rgba(7, 7, 7, 0.75) 45%,
-    rgba(7, 7, 7, 0.95) 100%
+    rgba(7, 7, 7, 0.12) 0%,
+    rgba(7, 7, 7, 0.4) 55%,
+    rgba(7, 7, 7, 0.78) 100%
   );
+}
+
+.episode-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(7, 7, 7, 0.2) 70%,
+    rgba(7, 7, 7, 0.35) 100%
+  );
+  transition: opacity 0.3s ease;
+}
+
+.episode-card__link:hover .episode-card__overlay {
+  opacity: 0.65;
 }
 
 .hero__content {
