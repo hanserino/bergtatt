@@ -3,7 +3,7 @@ layout: episode
 source: manual
 title: Kyrre Østbø | Etableringen av "Suser gjennom Harryland" i 1996
 episode_slug: kyrre
-permalink: /episoder/kyrre-stb-etableringen-av-suser-gjennom-harryland-i-1996/
+permalink: /episoder/kyrre-ostbo/
 date: 2026-04-24 12:00:00 +0000
 episode_number: 8
 duration: 43:34
