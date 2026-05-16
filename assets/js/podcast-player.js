@@ -9,16 +9,14 @@
   var SKIP_BACK = 15;
   var SKIP_FWD = 30;
 
-  var master = document.querySelector("[data-podcast-player]:not([data-dock-for])");
+  var master = document.querySelector("[data-podcast-player]");
   if (!master) return;
 
   var episodeId = master.getAttribute("data-episode-id");
   var audio = master.querySelector(".podcast-player__media");
-  var dock = document.querySelector('[data-dock-for="' + master.id + '"]');
   if (!audio || !episodeId) return;
 
   var players = [master];
-  if (dock) players.push(dock);
 
   var resumeBanner = master.querySelector("[data-resume-banner]");
   var resumeLabel = master.querySelector("[data-resume-label]");
@@ -190,24 +188,6 @@
     pendingResume = pos;
     if (resumeLabel) resumeLabel.textContent = formatTime(pos);
     if (resumeBanner) resumeBanner.hidden = false;
-  }
-
-  function setupDockVisibility() {
-    if (!dock) return;
-
-    var dockTitle = qs(dock, "[data-dock-title]");
-    var title = master.getAttribute("data-title");
-    if (dockTitle && title) dockTitle.textContent = title;
-
-    var observer = new IntersectionObserver(
-      function (entries) {
-        var visible = entries[0] && entries[0].isIntersecting;
-        dock.hidden = visible;
-        document.body.classList.toggle("has-player-dock", !visible);
-      },
-      { rootMargin: "0px 0px -15% 0px", threshold: 0 }
-    );
-    observer.observe(master);
   }
 
   function bindControls(root) {
@@ -403,7 +383,6 @@
 
   players.forEach(bindControls);
   bindMasterOnly();
-  setupDockVisibility();
   setupKeyboard();
   setupMediaSession();
   updateSpeedLabel();

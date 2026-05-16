@@ -85,11 +85,5 @@ body_class: page-episode
 </article>
 
 {% if page.audio_url %}
-{% include podcast-player.html
-  id="episode-player"
-  dock=true
-  title=page.title
-  duration=page.duration
-%}
 <script src="{{ '/assets/js/podcast-player.js' | relative_url }}" defer></script>
 {% endif %}
