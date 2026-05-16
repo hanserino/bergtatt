@@ -1,18 +1,21 @@
 ---
 layout: episode
-title: "Trym Atle Sæland | Kjerag, Cerro Torre, K2, Trollveggen, Marzigone Skole"
-date: 2024-06-19 12:00:00 +0000
-permalink: /episoder/trym-atle-saeland/
 source: manual
-rss_guid: "664324c599027c0012f9b564"
+title: Trym Atle Sæland | Kjerag, Cerro Torre, K2, Trollveggen, Marzigone Skole
+episode_slug: trym
+permalink: /episoder/trym-atle-saeland/
+date: 2024-06-19 12:00:00 +0000
 episode_number: 3
-duration: "1:44:45"
-audio_url: "https://sphinx.acast.com/p/open/s/6634a0a237ac170013034743/e/664324c599027c0012f9b564/media.mp3"
-image: "https://assets.pippa.io/shows/6634a0a237ac170013034743/1718798629019-ab38facb52ff4bedaca2246a5f3fba02.jpeg"
-acast_url: "https://shows.acast.com/bergtatt/episodes/trym-atle-saeland"
-episode_type: "full"
-description: "Trym Atle Sæland begynte å klatre tidlig på 90-tallet i hjembyen Stavanger, og ble fort besatt av Kjerag i Lysefjorden. Her tilbragte han stort sett all…"
-hero_image: "/assets/images/2.jpeg"
+duration: 1:44:45
+description: Trym Atle Sæland begynte å klatre tidlig på 90-tallet i hjembyen
+  Stavanger, og ble fort besatt av Kjerag i Lysefjorden. Her tilbragte han stort
+  sett all…
+episode_type: full
+hero_image: /assets/uploads/trym.jpg
+image: https://assets.pippa.io/shows/6634a0a237ac170013034743/1718798629019-ab38facb52ff4bedaca2246a5f3fba02.jpeg
+audio_url: https://sphinx.acast.com/p/open/s/6634a0a237ac170013034743/e/664324c599027c0012f9b564/media.mp3
+acast_url: https://shows.acast.com/bergtatt/episodes/trym-atle-saeland
+rss_guid: 664324c599027c0012f9b564
 ---
 
 [Trym Atle Sæland](https://www.instagram.com/trymatlesaeland/) begynte å klatre tidlig på 90-tallet i hjembyen Stavanger, og ble fort besatt av Kjerag i Lysefjorden. Her tilbragte han stort sett all fritid hele dette tiåret, og sammen med den nå avdøde klatrepartneren Stein-Ivar Gravdal etablerte de noen legendariske ruter, som blant annet:
