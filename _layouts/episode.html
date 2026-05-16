@@ -2,15 +2,44 @@
 layout: default
 body_class: page-episode
 ---
-{% assign hero = page.hero_image | default: site.assets.hero_images.first %}
-{% capture hero_src %}{% include media-url.html path=hero %}{% endcapture %}
+{% if page.desktop_hero_image %}
+  {% capture desktop_header %}{% include media-url.html path=page.desktop_hero_image %}{% endcapture %}
+{% else %}
+  {% capture desktop_header %}{% include pick-header-image.html seed=page.permalink %}{% endcapture %}
+  {% assign desktop_header = desktop_header | strip | relative_url %}
+{% endif %}
+{% capture header_fallback %}{% include first-header-image.html %}{% endcapture %}
 {% capture image_src %}{% include media-url.html path=page.image %}{% endcapture %}
 
 <article class="episode" itemscope itemtype="https://schema.org/PodcastEpisode">
-  <header class="episode-hero">
-    <div class="episode-hero__bg" aria-hidden="true">
+  <header class="episode__page-head" aria-labelledby="episode-page-title">
+    <div class="episode__page-head__bg"{% unless page.desktop_hero_image %} data-random-header="desktop"{% endunless %} aria-hidden="true">
       <img
-        src="{{ hero_src | strip }}"
+        src="{{ desktop_header | strip }}"
+        alt=""
+        width="1920"
+        height="1080"
+        decoding="async"
+      >
+      <div class="episode-hero__veil"></div>
+    </div>
+    <div class="episode__page-head__inner">
+      <a class="episode-hero__back" href="{{ '/' | relative_url }}#episoder">← Episoder</a>
+      {% if page.episode_number %}
+      <p class="episode-hero__label">Episode {{ page.episode_number }}</p>
+      {% endif %}
+      <h1 id="episode-page-title" class="episode-hero__title" itemprop="name">{{ page.title }}</h1>
+      <p class="episode-hero__meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{% include date-nb.html date=page.date %}</time>
+        {% if page.duration %}<span>{{ page.duration }}</span>{% endif %}
+      </p>
+    </div>
+  </header>
+
+  <header class="episode-hero episode-hero--mobile" aria-labelledby="episode-mobile-title">
+    <div class="episode-hero__bg"{% unless page.hero_image %} data-random-header{% endunless %} aria-hidden="true">
+      <img
+        src="{% if page.hero_image %}{% capture hero_src %}{% include media-url.html path=page.hero_image %}{% endcapture %}{{ hero_src | strip }}{% else %}{{ header_fallback | strip | relative_url }}{% endif %}"
         alt=""
         width="1920"
         height="1080"
@@ -24,15 +53,22 @@ body_class: page-episode
       {% if page.episode_number %}
       <p class="episode-hero__label">Episode {{ page.episode_number }}</p>
       {% endif %}
-      <h1 class="episode-hero__title" itemprop="name">{{ page.title }}</h1>
+      <h1 id="episode-mobile-title" class="episode-hero__title">{{ page.title }}</h1>
       <p class="episode-hero__meta">
-        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: '%d. %B %Y' }}</time>
+        <time datetime="{{ page.date | date_to_xmlschema }}">{% include date-nb.html date=page.date %}</time>
         {% if page.duration %}<span>{{ page.duration }}</span>{% endif %}
       </p>
     </div>
   </header>
 
   <div class="episode__layout">
+    <div class="episode__notes">
+      <h2 class="episode__subhead episode__subhead--mobile">Shownotes</h2>
+      <div class="episode-body prose" itemprop="description">
+        {{ content }}
+      </div>
+    </div>
+
     <aside class="episode__media-col">
       {% if page.image %}
       <figure class="episode__art">
@@ -74,13 +110,6 @@ body_class: page-episode
       </section>
       {% endif %}
     </aside>
-
-    <div class="episode__notes">
-      <h2 class="episode__subhead">Shownotes</h2>
-      <div class="episode-body prose" itemprop="description">
-        {{ content }}
-      </div>
-    </div>
   </div>
 </article>
 

@@ -1,6 +1,6 @@
 title: Bergtatt
 description: >-
-  Bratt friluftsliv — alpinklatring, randonee, BASE og andre fjellsporter i bratt terreng med høye konsekvenser.
+  Alpinklatring, randonee, splitboard, BASE og andre fjellsporter i bratt terreng med høye konsekvenser.
 tagline: En norsk podcast om bratt friluftsliv
 url: "https://bergtattpodcast.no"
 baseurl: ""
@@ -32,18 +32,19 @@ links:
   acast: "https://shows.acast.com/bergtatt"
   rss: "https://feeds.acast.com/public/shows/bergtatt"
   instagram: "https://www.instagram.com/bergtatt_pod/"
+  youtube: "https://youtube.com/playlist?list=PLC4wekLfsjKATGvnGjU8ree4lndjRN9Sd&si=-43yVtbnX9DMGmbr"
 
 # Lokale assets
 assets:
   cover: "/assets/other/bergtatt-podcast-cover.jpg"
   logo_white: "/assets/logo/bergtatt-white.png"
   logo_black: "/assets/logo/bergtatt-black.png"
-  hero_images:
-    - "/assets/images/1.jpeg"
-    - "/assets/images/2.jpeg"
-    - "/assets/images/3.jpeg"
-    - "/assets/images/4.jpeg"
-    - "/assets/images/5.jpeg"
+  header_images:
+    - "/assets/headers/cover1.jpeg"
+    - "/assets/headers/cover2.jpeg"
+    - "/assets/headers/cover3.jpeg"
+    - "/assets/headers/cover4.jpeg"
+    - "/assets/headers/cover5.jpeg"
 
 # admin/ publiseres bevisst (Decap CMS på /admin/)
 exclude:

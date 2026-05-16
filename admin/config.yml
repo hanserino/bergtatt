@@ -105,14 +105,23 @@ collections:
           - { label: Trailer, value: trailer }
           - { label: Bonus, value: bonus }
 
-      - label: Kort / hero
+      - label: Kort / hero (mobil)
         name: hero_image
         widget: image
         choose_url: false
         media_folder: "/assets/uploads"
         public_folder: "/assets/uploads"
         required: false
-        hint: "Bakgrunnsbilde på episoden og i episodelisten. Last opp her."
+        hint: "Valgfritt hero-bilde øverst på mobil. Uten bilde brukes et tilfeldig fjellbilde fra /assets/headers/."
+
+      - label: Desktop hero
+        name: desktop_hero_image
+        widget: image
+        choose_url: false
+        media_folder: "/assets/uploads"
+        public_folder: "/assets/uploads"
+        required: false
+        hint: "Valgfritt bakgrunnsbilde øverst på desktop. Uten bilde brukes et tilfeldig fjellbilde fra /assets/headers/."
 
       - label: Episodekunst
         name: image

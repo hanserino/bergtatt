@@ -28,11 +28,11 @@ FEED_URL = os.environ.get(
 )
 
 HERO_IMAGES = [
-    "/assets/images/1.jpeg",
-    "/assets/images/2.jpeg",
-    "/assets/images/3.jpeg",
-    "/assets/images/4.jpeg",
-    "/assets/images/5.jpeg",
+    "/assets/headers/cover1.jpeg",
+    "/assets/headers/cover2.jpeg",
+    "/assets/headers/cover3.jpeg",
+    "/assets/headers/cover4.jpeg",
+    "/assets/headers/cover5.jpeg",
 ]
 
 YOUTUBE_RE = re.compile(

@@ -1,0 +1,18 @@
+{% comment %}
+  Skriver URL til et bilde fra site.assets.header_images.
+  Parametre: seed (valgfri) — stabil rotasjon per side.
+{% endcomment %}
+{% assign headers = site.assets.header_images | default: empty %}
+{% if headers.size > 0 %}
+  {% if include.seed %}
+    {% assign seed_len = include.seed | size %}
+    {% assign h_idx = seed_len | modulo: headers.size %}
+  {% elsif page.episode_number %}
+    {% assign h_idx = page.episode_number | minus: 1 | modulo: headers.size %}
+  {% else %}
+    {% assign h_idx = page.date | date: '%j' | modulo: headers.size %}
+  {% endif %}
+  {{- headers[h_idx] -}}
+{% else %}
+  {%- include first-header-image.html -%}
+{% endif %}

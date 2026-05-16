@@ -1,0 +1,13 @@
+{% comment %}
+  Norsk dato. Bruk: {% include date-nb.html date=page.date %}
+  Valgfritt: format=short → 27.03.2026, ellers 27. mars 2026
+{% endcomment %}
+{%- assign fmt = include.format | default: "long" -%}
+{%- if fmt == "short" -%}
+{{- include.date | date: "%d.%m.%Y" -}}
+{%- else -%}
+{%- assign month_names = "januar|februar|mars|april|mai|juni|juli|august|september|oktober|november|desember" | split: "|" -%}
+{%- assign month_index = include.date | date: "%m" | plus: 0 | minus: 1 -%}
+{%- assign day = include.date | date: "%d" | plus: 0 -%}
+{{- day }}. {{ month_names[month_index] }} {{ include.date | date: "%Y" -}}
+{%- endif -%}

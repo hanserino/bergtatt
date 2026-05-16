@@ -1,8 +1,15 @@
 {% assign post = include.post %}
 {% assign idx = include.index | default: 0 %}
-{% assign heroes = site.assets.hero_images %}
-{% assign hero_idx = idx | modulo: heroes.size %}
-{% assign hero = post.hero_image | default: heroes[hero_idx] %}
+{% assign heroes = site.assets.header_images | default: empty %}
+{% if post.hero_image %}
+  {% assign hero = post.hero_image %}
+{% elsif heroes.size > 0 %}
+  {% assign hero_idx = idx | modulo: heroes.size %}
+  {% assign hero = heroes[hero_idx] %}
+{% else %}
+  {% capture hero %}{% include first-header-image.html %}{% endcapture %}
+  {% assign hero = hero | strip %}
+{% endif %}
 {% capture hero_src %}{% include media-url.html path=hero %}{% endcapture %}
 <article class="episode-card{% if include.featured %} episode-card--featured{% endif %}">
   <a class="episode-card__link" href="{{ post.url | relative_url }}">
@@ -23,7 +30,7 @@
     <div class="episode-card__body">
       <h2 class="episode-card__title">{{ post.title }}</h2>
       <p class="episode-card__meta">
-        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%d.%m.%Y' }}</time>
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{% include date-nb.html date=post.date format="short" %}</time>
         {% if post.duration %}<span>{{ post.duration }}</span>{% endif %}
         {% if post.youtube_id %}<span class="episode-card__yt" aria-label="Finnes på YouTube">▶</span>{% endif %}
       </p>

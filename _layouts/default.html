@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'nb' }}">
 {% include head.html %}
-<body class="{% if page.body_class %}{{ page.body_class }}{% endif %}">
+<body class="{% if page.body_class %}{{ page.body_class }}{% elsif layout.body_class %}{{ layout.body_class }}{% endif %}">
   <a class="skip-link" href="#main">Hopp til innhold</a>
   {% include header.html %}
   <main id="main" class="site-main">

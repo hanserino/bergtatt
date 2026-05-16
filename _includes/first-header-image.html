@@ -1,0 +1,6 @@
+{%- assign headers = site.assets.header_images | default: empty -%}
+{%- if headers.size > 0 -%}
+{{- headers | first -}}
+{%- else -%}
+/assets/headers/cover1.jpeg
+{%- endif -%}

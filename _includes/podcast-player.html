@@ -1,8 +1,15 @@
 {% assign player_id = include.id | default: 'podcast-player' %}
 {% assign is_dock = include.dock | default: false %}
+{% assign has_art = false %}
+{% unless is_dock %}
+  {% if include.image %}
+    {% assign has_art = true %}
+    {% capture artwork_src %}{% include media-url.html path=include.image %}{% endcapture %}
+  {% endif %}
+{% endunless %}
 
 <div
-  class="podcast-player{% if is_dock %} podcast-player--dock{% endif %}"
+  class="podcast-player{% if is_dock %} podcast-player--dock{% endif %}{% if has_art %} podcast-player--has-art{% endif %}"
   id="{% if is_dock %}{{ player_id }}-dock{% else %}{{ player_id }}{% endif %}"
   data-podcast-player
   {% if is_dock %}
@@ -34,6 +41,19 @@
   <div class="podcast-player__bar">
     {% if is_dock %}
     <p class="podcast-player__dock-title" data-dock-title>{{ include.title | escape }}</p>
+    {% endif %}
+
+    {% if has_art %}
+    <figure class="podcast-player__art">
+      <img
+        src="{{ artwork_src | strip }}"
+        alt=""
+        width="80"
+        height="80"
+        loading="lazy"
+        decoding="async"
+      >
+    </figure>
     {% endif %}
 
     <button
