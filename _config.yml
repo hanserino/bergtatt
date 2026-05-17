@@ -7,6 +7,8 @@ baseurl: ""
 lang: nb
 locale: nb_NO
 
+google_analytics: "G-MV27MH77XL"
+
 author:
   name: Hans Kristian Smedsrød Engdahl
   url: "https://www.instagram.com/hanserino/"
