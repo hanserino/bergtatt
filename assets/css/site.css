@@ -440,6 +440,27 @@ a:hover {
 }
 
 /* Episodes grid */
+.about {
+  padding: 4rem var(--space);
+  border-top: 1px solid var(--line);
+}
+
+.about__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.about__inner p {
+  margin: 0 0 1rem;
+  max-width: 62ch;
+  color: var(--fg-muted);
+  line-height: 1.65;
+}
+
+.about__inner p:last-child {
+  margin-bottom: 0;
+}
+
 .episodes {
   padding: 4rem var(--space) 6rem;
   max-width: calc(var(--max) + 4rem);

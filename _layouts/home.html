@@ -17,7 +17,7 @@ body_class: page-home
     <div class="hero__veil"></div>
   </div>
   <div class="hero__content">
-    <h1 id="site-title" class="visually-hidden">{{ site.title }}</h1>
+    <h1 id="site-title" class="visually-hidden">Bergtatt Podcast — norsk podcast om klatring, randonee, alpinklatring og fjellsport</h1>
     <p id="hero-heading" class="hero__title">{{ site.tagline }}</p>
     <p class="hero__lead">{{ site.description }}</p>
     <div class="hero__actions">
@@ -61,14 +61,27 @@ body_class: page-home
   </div>
 </section>
 
+<section id="om" class="about" aria-labelledby="about-heading">
+  <div class="about__inner">
+    <h2 id="about-heading" class="section-title">Om Bergtatt Podcast</h2>
+    <p>
+      <strong>Bergtatt Podcast</strong> er en norsk podkast produsert av <a href="https://www.instagram.com/hanserino/" rel="noopener noreferrer">Hans Kristian Smedsrød Engdahl</a> for <a href="https://naerdetalvor.no/" rel="noopener noreferrer">Nå Er Det Alvor</a> om <strong>klatring</strong>,
+      <strong>alpinklatring</strong>, <strong>randonee</strong>, <strong>splitboard</strong>,
+      <strong>isklatring</strong>, <strong>BASE</strong> og annen <strong>fjellsport</strong> og
+      <strong>ekstremsport</strong> i bratt terreng med høy innsats og høye konsekvenser. 
+    </p>
+    <p>Podcasten holder til i Tindehovedstaden Åndalsnes, og har som mål å dokumentere det som skjer og har skjedd av fjellsport i Romsdalen og resten av Norge.</p>
+  </div>
+</section>
+
 <section id="episoder" class="episodes" aria-labelledby="episodes-heading">
   <header class="episodes__header">
     <h2 id="episodes-heading" class="section-title">Episoder</h2>
-    <p class="episodes__count">{{ site.posts.size }} samtaler</p>
+    <p class="episodes__count">{{ site.posts.size }} episoder</p>
   </header>
   <div class="episodes__grid">
     {% for post in site.posts %}
       {% include episode-card.html post=post index=forloop.index0 featured=forloop.first %}
-    {% endfor %}
+    {% endfor %} 
   </div>
 </section>

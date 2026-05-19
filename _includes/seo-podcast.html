@@ -1,28 +1,63 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "PodcastSeries",
-  "name": {{ site.title | jsonify }},
-  "description": {{ site.description | jsonify }},
-  "url": {{ site.url | jsonify }},
-  "inLanguage": "nb",
-  "author": {
-    "@type": "Person",
-    "name": {{ site.author.name | jsonify }},
-    "url": {{ site.author.url | jsonify }}
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": {{ site.publisher.name | jsonify }},
-    "url": {{ site.publisher.url | jsonify }}
-  },
-  "image": {{ site.assets.cover | absolute_url | jsonify }},
-  "webFeed": {{ site.links.rss | jsonify }},
-  "sameAs": [
-    {{ site.links.spotify | jsonify }},
-    {{ site.links.apple_podcasts | jsonify }},
-    {{ site.links.acast | jsonify }},
-    {{ site.links.instagram | jsonify }}
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ site.url | append: '/#website' | jsonify }},
+      "name": "Bergtatt Podcast",
+      "alternateName": ["Bergtatt", "Bergtatt podkast"],
+      "url": {{ site.url | jsonify }},
+      "description": {{ site.seo.meta_description | default: site.description | jsonify }},
+      "inLanguage": "nb-NO",
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ site.publisher.name | jsonify }},
+        "url": {{ site.publisher.url | jsonify }}
+      }
+    },
+    {
+      "@type": "PodcastSeries",
+      "@id": {{ site.url | append: '/#podcast' | jsonify }},
+      "name": "Bergtatt Podcast",
+      "alternateName": ["Bergtatt", "Bergtatt podkast"],
+      "description": {{ site.seo.meta_description | default: site.description | jsonify }},
+      "url": {{ site.url | jsonify }},
+      "inLanguage": "nb",
+      "genre": ["Sports", "Outdoors", "Climbing"],
+      "keywords": {{ site.seo.keywords | join: ', ' | jsonify }},
+      {% if site.seo.topics %}
+      "about": [
+        {% for topic in site.seo.topics %}
+        { "@type": "Thing", "name": {{ topic | jsonify }} }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ],
+      "knowsAbout": [
+        {% for topic in site.seo.topics %}
+        {{ topic | jsonify }}{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ],
+      {% endif %}
+      "author": {
+        "@type": "Person",
+        "name": {{ site.author.name | jsonify }},
+        "url": {{ site.author.url | jsonify }}
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ site.publisher.name | jsonify }},
+        "url": {{ site.publisher.url | jsonify }}
+      },
+      "image": {{ site.assets.cover | absolute_url | jsonify }},
+      "webFeed": {{ site.links.rss | jsonify }},
+      "sameAs": [
+        {{ site.links.spotify | jsonify }},
+        {{ site.links.apple_podcasts | jsonify }},
+        {{ site.links.acast | jsonify }},
+        {{ site.links.instagram | jsonify }},
+        {{ site.links.youtube | jsonify }}
+      ]
+    }
   ]
 }
 </script>

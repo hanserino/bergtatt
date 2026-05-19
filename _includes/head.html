@@ -11,13 +11,20 @@
     {% assign full_title = page_title | append: ' · ' | append: site.title %}
   {% endunless %}
 
-  {% assign meta_desc = page.description | default: site.description %}
-  {% if page.excerpt and page.description == nil %}
-    {% assign meta_desc = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
+  {% if page.url == '/' and site.seo.meta_description %}
+    {% assign meta_desc = site.seo.meta_description %}
+  {% else %}
+    {% assign meta_desc = page.description | default: site.description %}
+    {% if page.excerpt and page.description == nil %}
+      {% assign meta_desc = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
+    {% endif %}
   {% endif %}
 
   <title>{{ full_title }}</title>
   <meta name="description" content="{{ meta_desc | strip_html | escape }}">
+  {% if site.seo.keywords and page.url == '/' %}
+    <meta name="keywords" content="{{ site.seo.keywords | join: ', ' | escape }}">
+  {% endif %}
   <link rel="canonical" href="{{ page.url | absolute_url }}">
 
   <meta property="og:type" content="{% if page.layout == 'episode' %}article{% else %}website{% endif %}">
