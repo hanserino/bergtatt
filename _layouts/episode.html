@@ -8,12 +8,13 @@ body_class: page-episode
   {% capture desktop_header %}{% include pick-header-image.html seed=page.permalink %}{% endcapture %}
   {% assign desktop_header = desktop_header | strip | relative_url %}
 {% endif %}
-{% capture header_fallback %}{% include first-header-image.html %}{% endcapture %}
+{% capture mobile_header %}{% include pick-header-image.html seed=page.permalink %}{% endcapture %}
+{% assign mobile_header = mobile_header | strip | relative_url %}
 {% capture image_src %}{% include media-url.html path=page.image %}{% endcapture %}
 
 <article class="episode" itemscope itemtype="https://schema.org/PodcastEpisode">
   <header class="episode__page-head" aria-labelledby="episode-page-title">
-    <div class="episode__page-head__bg"{% unless page.desktop_hero_image %} data-random-header="desktop"{% endunless %} aria-hidden="true">
+    <div class="episode__page-head__bg" aria-hidden="true">
       <img
         src="{{ desktop_header | strip }}"
         alt=""
@@ -37,9 +38,9 @@ body_class: page-episode
   </header>
 
   <header class="episode-hero episode-hero--mobile" aria-labelledby="episode-mobile-title">
-    <div class="episode-hero__bg"{% unless page.hero_image %} data-random-header{% endunless %} aria-hidden="true">
+    <div class="episode-hero__bg" aria-hidden="true">
       <img
-        src="{% if page.hero_image %}{% capture hero_src %}{% include media-url.html path=page.hero_image %}{% endcapture %}{{ hero_src | strip }}{% else %}{{ header_fallback | strip | relative_url }}{% endif %}"
+        src="{% if page.hero_image %}{% capture hero_src %}{% include media-url.html path=page.hero_image %}{% endcapture %}{{ hero_src | strip }}{% else %}{{ mobile_header }}{% endif %}"
         alt=""
         width="1920"
         height="1080"

@@ -2,18 +2,9 @@
 layout: default
 body_class: page-home
 ---
-{% capture header_fallback %}{% include first-header-image.html %}{% endcapture %}
-
 <section class="hero" aria-labelledby="site-title">
-  <div class="hero__media" data-random-header aria-hidden="true">
-    <img
-      src="{{ header_fallback | strip | relative_url }}"
-      alt=""
-      width="1920"
-      height="1080"
-      fetchpriority="high"
-      decoding="async"
-    >
+  <div class="hero__media" aria-hidden="true">
+    {% include random-header-img.html %}
     <div class="hero__veil"></div>
   </div>
   <div class="hero__content">

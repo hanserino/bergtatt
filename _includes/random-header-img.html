@@ -1,0 +1,24 @@
+{% comment %}
+  Skriver <img> med tilfeldig header-bilde synkront (document.write) for å unngå flicker.
+{% endcomment %}
+{% if site.assets.header_images.size > 0 %}
+<script>
+(function () {
+  var urls = [{% for img in site.assets.header_images %}{{ img | relative_url | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}];
+  if (!urls.length) return;
+  var src = urls[Math.floor(Math.random() * urls.length)];
+  document.write(
+    '<img src="' + src + '" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">'
+  );
+})();
+</script>
+{% else %}
+<img
+  src="{{ '/assets/headers/cover1.jpeg' | relative_url }}"
+  alt=""
+  width="1920"
+  height="1080"
+  fetchpriority="high"
+  decoding="async"
+>
+{% endif %}
