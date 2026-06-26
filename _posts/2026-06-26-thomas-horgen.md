@@ -7,7 +7,11 @@ permalink: /episoder/thomas-horgen/
 date: 2026-06-26 14:35:00 +02:00
 episode_number: 10
 duration: 1:52:19
-description: ""
+description: >
+  Thomas Horgen har skrevet klatremetodebibelen Klatring – En metodebok, en
+  hardback på 528 sider som veier 2 kilo. På vei til et bokbad i Ålesund stoppet
+  han innom Norsk Tindesenteret på Åndalsnes og tok en prat med Hans Kristian i
+  podcasten Bergtatt.
 episode_type: full
 desktop_hero_image: ""
 image: /assets/uploads/thomashorgen.jpeg
