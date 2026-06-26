@@ -1,7 +1,7 @@
 ---
 layout: episode
 source: decap
-title: Thomas Horgen | Klatring - En Metodebok
+title: Thomas Horgen | Klatring - en metodebok
 episode_slug: thomas-horgen
 permalink: /episoder/thomas-horgen/
 date: 2026-06-26 14:35:00 +02:00
