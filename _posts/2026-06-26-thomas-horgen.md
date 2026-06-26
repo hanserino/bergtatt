@@ -9,6 +9,7 @@ episode_number: 10
 duration: 1:52:19
 description: ""
 episode_type: full
+desktop_hero_image: /assets/uploads/thomashorgen.jpeg
 image: /assets/uploads/thomashorgen.jpeg
 acast_url: https://shows.acast.com/6634a0a237ac170013034743/6a3e718da3fa97823766e578
 youtube_id: OlRB8ACjCN4
