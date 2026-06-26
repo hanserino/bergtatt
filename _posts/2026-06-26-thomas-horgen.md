@@ -9,9 +9,10 @@ episode_number: 10
 duration: 1:52:19
 description: ""
 episode_type: full
-desktop_hero_image: /assets/uploads/thomashorgen.jpeg
+desktop_hero_image: ""
 image: /assets/uploads/thomashorgen.jpeg
-acast_url: https://shows.acast.com/6634a0a237ac170013034743/6a3e718da3fa97823766e578
+audio_url: https://open.acast.com/public/streams/6634a0a237ac170013034743/episodes/6a3e718da3fa97823766e578.mp3
+acast_url: https://shows.acast.com/bergtatt/episodes/thomas-horgen
 youtube_id: OlRB8ACjCN4
 youtube_url: https://youtu.be/OlRB8ACjCN4
 ---
