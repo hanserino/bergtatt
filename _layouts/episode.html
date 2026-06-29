@@ -2,8 +2,9 @@
 layout: default
 body_class: page-episode
 ---
-{% if page.desktop_hero_image %}
-  {% capture desktop_header %}{% include media-url.html path=page.desktop_hero_image %}{% endcapture %}
+{% assign desktop_hero = page.desktop_hero_image | strip %}
+{% if desktop_hero.size > 0 %}
+  {% capture desktop_header %}{% include media-url.html path=desktop_hero %}{% endcapture %}
 {% else %}
   {% capture desktop_header %}{% include pick-header-image.html seed=page.permalink %}{% endcapture %}
   {% assign desktop_header = desktop_header | strip | relative_url %}
@@ -70,6 +71,13 @@ body_class: page-episode
       </div>
     </div>
 
+    {% if page.youtube_id %}
+    <section class="episode__video" aria-labelledby="video-heading">
+      <h2 id="video-heading" class="episode__subhead">Se på YouTube</h2>
+      {% include youtube-embed.html id=page.youtube_id url=page.youtube_url title=page.title %}
+    </section>
+    {% endif %}
+
     <aside class="episode__media-col">
       {% if page.image %}
       <figure class="episode__art">
@@ -83,13 +91,6 @@ body_class: page-episode
           itemprop="image"
         >
       </figure>
-      {% endif %}
-
-      {% if page.youtube_id %}
-      <section class="episode__video" aria-labelledby="video-heading">
-        <h2 id="video-heading" class="episode__subhead">Se på YouTube</h2>
-        {% include youtube-embed.html id=page.youtube_id url=page.youtube_url title=page.title %}
-      </section>
       {% endif %}
 
       {% if page.audio_url %}
