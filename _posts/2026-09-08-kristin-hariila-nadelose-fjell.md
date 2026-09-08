@@ -14,6 +14,7 @@ description: "Drøye tre år etter at Kristin Harila og hennes partner Tenjen La
   å vise den fram til fullsatt sal. "
 episode_type: full
 hero_image: /assets/uploads/harila-bergtatt.jpg
+desktop_hero_image: /assets/uploads/arne-85.jpg
 image: /assets/uploads/harila-bergtatt-2.jpg
 audio_url: https://open.acast.com/public/streams/6634a0a237ac170013034743/episodes/6a9fe56b3559f17478924808.mp3
 acast_url: https://shows.acast.com/bergtatt/episodes/harila
