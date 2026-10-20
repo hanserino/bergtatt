@@ -10,6 +10,7 @@ duration: 1:22:29
 episode_type: full
 hero_image: /assets/uploads/tinderogbanditter.jpg
 desktop_hero_image: /assets/uploads/tinderogbanditter-desktop-hero.jpg
+image: /assets/uploads/bandittersquare.jpg
 youtube_id: Ke_Zskb_Hw8
 youtube_url: https://youtu.be/Ke_Zskb_Hw8
 ---
